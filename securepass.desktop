@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=SecurePass
+Comment=Generador seguro de contraseñas
+Exec=/usr/bin/securepass
+Icon=/usr/share/pixmaps/securepass.png
+Terminal=false
+Type=Application
+Categories=Utility;Security;

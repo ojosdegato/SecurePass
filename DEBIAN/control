@@ -1,0 +1,11 @@
+Package: securepass
+Version: 1.0
+Section: utils
+Priority: optional
+Architecture: all
+Depends: python3 (>=3.11), python3-tk
+Maintainer: Javier Cachón Garrido
+Description: Generador seguro de contraseñas con interfaz gráfica
+ Aplicación gráfica desarrollada en Python con Tkinter para generar
+ contraseñas seguras con indicador de fortaleza en tiempo real.
+ 
