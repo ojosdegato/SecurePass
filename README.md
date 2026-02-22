@@ -10,7 +10,7 @@ SecurePass permite generar contraseñas robustas de forma configurable, con indi
 ## 📌 Características principales
 
 - ✔ Generación criptográficamente segura (`secrets`)
-- ✔ Configuración de longitud (4–128 caracteres)
+- ✔ Configuración de longitud (4–15 caracteres)
 - ✔ Inclusión opcional de:
   - Mayúsculas
   - Minúsculas
