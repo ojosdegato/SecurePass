@@ -19,7 +19,6 @@ class SecurePassApp:
         self.root.geometry("520x450")
         self.root.resizable(False, False)
 
-        # Tema estable para personalización
         style = ttk.Style()
         style.theme_use("clam")
 
@@ -66,23 +65,34 @@ class SecurePassApp:
 
         ttk.Label(frame, text="Longitud de contraseña:").pack(anchor="w")
 
-        ttk.Spinbox(frame, from_=4, to=128, textvariable=self.length_var).pack(fill="x")
+        ttk.Spinbox(frame, from_=4, to=15,
+                    textvariable=self.length_var).pack(fill="x")
 
-        ttk.Checkbutton(frame, text="Incluir Mayúsculas", variable=self.use_upper).pack(anchor="w")
-        ttk.Checkbutton(frame, text="Incluir Minúsculas", variable=self.use_lower).pack(anchor="w")
-        ttk.Checkbutton(frame, text="Incluir Números", variable=self.use_numbers).pack(anchor="w")
-        ttk.Checkbutton(frame, text="Incluir Símbolos", variable=self.use_symbols).pack(anchor="w")
+        ttk.Checkbutton(frame, text="Incluir Mayúsculas",
+                        variable=self.use_upper).pack(anchor="w")
+        ttk.Checkbutton(frame, text="Incluir Minúsculas",
+                        variable=self.use_lower).pack(anchor="w")
+        ttk.Checkbutton(frame, text="Incluir Números",
+                        variable=self.use_numbers).pack(anchor="w")
+        ttk.Checkbutton(frame, text="Incluir Símbolos",
+                        variable=self.use_symbols).pack(anchor="w")
 
-        ttk.Button(frame, text="Generar / Regenerar", command=self.generate_password).pack(pady=10)
+        ttk.Button(frame, text="Generar / Regenerar",
+                   command=self.generate_password).pack(pady=10)
 
-        ttk.Entry(frame, textvariable=self.password_var, font=("Courier", 12)).pack(fill="x", pady=5)
+        ttk.Entry(frame, textvariable=self.password_var,
+                  font=("Courier", 12)).pack(fill="x", pady=5)
 
-        ttk.Button(frame, text="Guardar en archivo", command=self.save_password).pack(pady=5)
-        ttk.Button(frame, text="Cerrar aplicación", command=self.root.quit).pack(pady=5)
+        ttk.Button(frame, text="Guardar en archivo",
+                   command=self.save_password).pack(pady=5)
+        ttk.Button(frame, text="Cerrar aplicación",
+                   command=self.root.quit).pack(pady=5)
 
         ttk.Label(frame, text="Fortaleza:").pack(anchor="w", pady=(15, 0))
 
-        self.strength_bar = ttk.Progressbar(frame, length=400, maximum=100)
+        self.strength_bar = ttk.Progressbar(frame,
+                                            length=400,
+                                            maximum=100)
         self.strength_bar.pack()
 
         self.strength_label = ttk.Label(frame, text="")
@@ -92,6 +102,13 @@ class SecurePassApp:
     # GENERADOR
     # ==========================
     def generate_password(self):
+
+        length = self.length_var.get()
+
+        if length < 4 or length > 15:
+            messagebox.showerror("Error",
+                                 "La longitud debe estar entre 4 y 15 caracteres.")
+            return
 
         charset = ""
 
@@ -105,10 +122,9 @@ class SecurePassApp:
             charset += string.punctuation
 
         if not charset:
-            messagebox.showerror("Error", "Debe seleccionar al menos un tipo de carácter.")
+            messagebox.showerror("Error",
+                                 "Debe seleccionar al menos un tipo de carácter.")
             return
-
-        length = self.length_var.get()
 
         password = ''.join(secrets.choice(charset) for _ in range(length))
         self.password_var.set(password)
@@ -116,34 +132,37 @@ class SecurePassApp:
         self.update_strength(password)
 
     # ==========================
-    # FORTALEZA ESTILO SEMÁFORO
+    # FORTALEZA
     # ==========================
     def update_strength(self, password):
 
-        score = 0
+        length = len(password)
+        variety = 0
 
         if any(c.islower() for c in password):
-            score += 1
+            variety += 1
         if any(c.isupper() for c in password):
-            score += 1
+            variety += 1
         if any(c.isdigit() for c in password):
-            score += 1
+            variety += 1
         if any(c in string.punctuation for c in password):
-            score += 1
+            variety += 1
 
-        score += min(len(password) // 8, 4)
-
-        percent = min(score * 12, 100)
+        score = (length * 4) + (variety * 10)
+        percent = min(score, 100)
 
         self.strength_bar["value"] = percent
 
-        if percent < 30:
+        if length <= 5:
+            text = "Muy débil"
+            color = "#8b0000"
+        elif length <= 7:
             text = "Débil"
             color = "#d90429"
-        elif percent < 60:
+        elif length <= 10:
             text = "Media"
             color = "#f77f00"
-        elif percent < 80:
+        elif length <= 13:
             text = "Fuerte"
             color = "#fcbf49"
         else:
@@ -167,7 +186,8 @@ class SecurePassApp:
         password = self.password_var.get()
 
         if not password:
-            messagebox.showwarning("Aviso", "No hay contraseña para guardar.")
+            messagebox.showwarning("Aviso",
+                                   "No hay contraseña para guardar.")
             return
 
         file_path = filedialog.asksaveasfilename(defaultextension=".txt")
@@ -183,10 +203,12 @@ class SecurePassApp:
         if password:
             self.root.clipboard_clear()
             self.root.clipboard_append(password)
-            messagebox.showinfo("Copiado", "✔ Copiado al portapapeles")
+            messagebox.showinfo("Copiado",
+                                "✔ Copiado al portapapeles")
 
     def show_help(self):
-        messagebox.showinfo("Ayuda", "Seleccione opciones y genere una contraseña segura.")
+        messagebox.showinfo("Ayuda",
+                            "Seleccione opciones y genere una contraseña segura.")
 
     def show_credits(self):
         messagebox.showinfo("Créditos",
@@ -202,4 +224,3 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = SecurePassApp(root)
     root.mainloop()
-    
