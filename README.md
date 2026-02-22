@@ -58,7 +58,7 @@ sudo apt install python3 python3-tk
 
 Instala la última versión:
 
-[📥 Descargar v1.0.0 (.deb)]([https://github.com/ojosdegato/SecurePass/releases/download/SecurePass/SecurePass.deb]
+[📥 Descargar v1.0.0 (.deb)] (https://github.com/ojosdegato/SecurePass/releases/download/SecurePass/SecurePass.deb)
 
 Instalar el paquete:
 
