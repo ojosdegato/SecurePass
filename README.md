@@ -22,7 +22,7 @@ SecurePass permite generar contraseñas robustas de forma configurable, con indi
 - ✔ Integración en menú XFCE
 - ✔ Icono conforme a especificación freedesktop
 - ✔ Empaquetado nativo `.deb`
-- ✔ Compatible con Debian 13 (Bookworm)
+- ✔ Compatible con Debian 13.
 
 ---
 
@@ -43,8 +43,8 @@ No se utiliza `random`, evitando vulnerabilidades típicas.
 
 ## 🖥 Requisitos
 
-- Debian 13 (Bookworm) o superior
-- Python 3.11+
+- Debian 13 o superior
+- Python 3.13+
 - python3-tk
 - Entorno gráfico (X11)
 
@@ -55,6 +55,10 @@ bash
 sudo apt install python3 python3-tk
 
 📦 Instalación mediante paquete .deb
+
+Instala la última versión:
+
+[📥 Descargar v1.0.0 (.deb)]([https://github.com/ojosdegato/SecurePass/releases/download/SecurePass/SecurePass.deb]
 
 Instalar el paquete:
 
