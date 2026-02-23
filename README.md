@@ -156,7 +156,7 @@ Especialista en GNU/Linux y Software Libre
 
 Versión 1.1 → Cálculo real de entropía en bits
 
-Versión 1.2 → Modo oscuro
+Versión 1.2 → Modo claro Windows 11
 
 Versión 2.0 → Interfaz moderna avanzada
 
