@@ -122,12 +122,6 @@ Python 3.13+
 
 $ dpkg-deb --build --root-owner-group SecurePass
 
-🔏 Firma del paquete (opcional)
-
-Firma manual:
-
-gpg --detach-sign --armor SecurePass.deb
-
 Verificación:
 
 gpg --verify SecurePass.deb.asc SecurePass.deb
