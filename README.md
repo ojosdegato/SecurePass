@@ -119,7 +119,7 @@ Python 3.13+
 
 🏗 Construcción del paquete
 
-dpkg-deb --build SecurePass
+$ dpkg-deb --build --root-owner-group SecurePass
 
 🔏 Firma del paquete (opcional)
 
@@ -130,6 +130,11 @@ gpg --detach-sign --armor SecurePass.deb
 Verificación:
 
 gpg --verify SecurePass.deb.asc SecurePass.deb
+
+Instalación deb:
+
+`$ sudo apt install ./SecurePass.deb`
+`$ sudo apt install -f`
 
 📚 Buenas prácticas aplicadas
 
