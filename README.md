@@ -93,6 +93,7 @@ SecurePass/
 │               └── 128x128/
 │                   └── apps/
 │                       └── securepass.png
+
 🎨 Integración gráfica
 
 SecurePass cumple la especificación:
