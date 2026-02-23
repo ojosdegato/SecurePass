@@ -60,13 +60,13 @@ Instala la última versión:
 
 [📥 Descargar v1.0.0 (.deb)] (https://github.com/ojosdegato/SecurePass/releases/download/SecurePass/SecurePass.deb)
 
-Instalar el paquete:
+Instalación deb:
 
-sudo dpkg -i SecurePass.deb
+$ sudo apt install ./SecurePass.deb
 
 Si faltan dependencias:
 
-sudo apt -f install
+$ sudo apt -f install
 
 Una vez instalado, la aplicación aparecerá en:
 
@@ -131,10 +131,6 @@ Verificación:
 
 gpg --verify SecurePass.deb.asc SecurePass.deb
 
-Instalación deb:
-
-`$ sudo apt install ./SecurePass.deb`
-`$ sudo apt install -f`
 
 📚 Buenas prácticas aplicadas
 
